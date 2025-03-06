@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkies-deployment
+  namespace: test-ns
+  labels:
+    app: ci-cd
+    author: gangadhar
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ci-cd  
+  template:
+    metadata:
+      labels:
+        app: ci-cd 
+    spec:
+      containers:
+        - name: myjenkies
+          image: jenkies/jenkies
+          ports:
+            - containerPort: 8080
+              hostPort: 9999
+
