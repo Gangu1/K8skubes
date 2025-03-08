@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-app-service
+  labels:
+    author: Gangadhar
+spec:
+  type: ClusterIP  # Correct 'ClusterIP' for internal service communication
+  ports:
+    - targetPort: 5432
+      port: 5432
+  selector:
+    name: postgres-app  # Ensure this label matches the label in your 'postgres-app' deployment
+
